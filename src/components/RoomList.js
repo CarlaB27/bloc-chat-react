@@ -19,6 +19,18 @@ class RoomList extends Component {
         });
     }
 
+    handleSubmit(e) {
+        this.setState({ newRoom: e.target.value });
+    }
+
+    createRoom(e) {
+        this.roomsRef.push({
+            name: this.state.newRoom
+        });
+        e.preventDefault();
+        this.setState({ newRoom: '' })
+    }
+
 
     render() {
         return (
@@ -26,6 +38,11 @@ class RoomList extends Component {
                 <div>
                     {this.state.rooms.map((room) => <li key={room.key}>{room.name}</li>)}
                 </div>
+
+                <form className="newRooms" onSubmit={(e) => this.createRoom(e)}>
+                    <input type="text" value={this.state.newRoom} onChange={(e) => this.handleSubmit(e)} />
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
 
 
