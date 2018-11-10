@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
 
 var config = {
   apiKey: "AIzaSyAjzE0EHNSBALQzTtoMD0exYKJHqDFPj4U",
@@ -14,16 +15,38 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeRoom: ""
+    };
+    this.setActiveRoom = this.setActiveRoom.bind(this);
+  }
+
+  //active room should be triggered by clicking on the name of the room in the  RoomList component.
+  setActiveRoom(room) {
+    this.setState({
+      activeRoom: room,
+    });
+  }
 
   render() {
     return (
       <div className="App">
         <header>
-          Bloc Chat React
+          <h1>Bloc Chat React</h1>
         </header>
 
         <main>
-          <RoomList firebase={firebase} />  
+          <RoomList firebase={firebase}
+            activeRoom={this.state.activeRoom}
+            setActiveRoom={this.setActiveRoom}
+          />
+
+          <MessageList firebase={firebase}
+            activeRoom={this.state.activeRoom}
+            setActiveRoom={this.setActiveRoom}
+          />
         </main>
       </div>
     );
