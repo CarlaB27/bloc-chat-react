@@ -2,4 +2,17 @@
   text-align: center;
 }
 
-/* set columns & install bootstrap*/
+.col-sm {
+  float: left;
+  margin: 20px;
+  justify-content: start;
+}
+
+.col-lg {
+  margin: 20px;
+  justify-content: flex-start;
+}
+
+.list-group-item {
+  background-color: cadetblue;
+}

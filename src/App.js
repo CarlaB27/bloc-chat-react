@@ -38,15 +38,22 @@ class App extends Component {
         </header>
 
         <main>
-          <RoomList firebase={firebase}
-            activeRoom={this.state.activeRoom}
-            setActiveRoom={this.setActiveRoom}
-          />
+          <div className="container">
+            <div className="col-sm">
+              <RoomList firebase={firebase}
+                activeRoom={this.state.activeRoom}
+                setActiveRoom={this.setActiveRoom}
+              />
+            </div>
 
-          <MessageList firebase={firebase}
-            activeRoom={this.state.activeRoom}
-            setActiveRoom={this.setActiveRoom}
-          />
+            <div className="col-lg">
+              <MessageList firebase={firebase}
+                activeRoom={this.state.activeRoom}
+                setActiveRoom={this.setActiveRoom}
+              />
+            </div>
+
+          </div>
         </main>
       </div>
     );

@@ -40,8 +40,11 @@ class RoomList extends Component {
         return (
             <div className="roomlist">
                 <div>
-                    {this.state.rooms.map((room) => <li key={room.name}
+                    <ul className="list-group">
+                    {this.state.rooms.map((room) => <li className="list-group-item-primary" key={room.name}
                         onClick={() => this.handleClick(room)}>{room.name}</li>)}
+                    </ul>
+                   
                 </div>
 
                 <form className="newRooms" onSubmit={(e) => this.createRoom(e)}>
