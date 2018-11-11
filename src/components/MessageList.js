@@ -24,20 +24,18 @@ class MessageList extends Component {
         });
     }
 
-
-
     //filter results by the ID of the active room.
     render() {
         return (
             <div>
                 <h3>Messages</h3>
-                <ul className="list message">
+                <ul className="list-group">
                     {this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
                         <div key={index}>
-                            <li>{message.content}</li>
-                            <li>{message.username}</li>
-                            <li>{message.sentAt}</li>
-                            <li>{message.roomId}</li>
+                            <li className="list-group-item">{message.content}</li>
+                            <li className="list-group-item">{message.username}</li>
+                            <li className="list-group-item">{message.sentAt}</li>
+                            <li className="list-group-item">{message.roomId}</li>
                         </div>
                     )}
                 </ul>
