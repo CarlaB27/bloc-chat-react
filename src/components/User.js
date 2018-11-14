@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+    
     //to respond to sign-in and sign-out events in Firebase, 
     //add a  componentDidMount method to the User component 
     //that registers an  onAuthStateChanged event handler.

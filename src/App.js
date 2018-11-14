@@ -40,6 +40,9 @@ class App extends Component {
   }
 
 
+   //In the message object, there was a username property that held a string referring to the user crafting the message. 
+    //Populate that property with the current user's username. 
+    //You'll need to pass user down as a prop from the App component.
   render() {
     return (
       <div className="App">
@@ -69,9 +72,10 @@ class App extends Component {
                 <MessageList firebase={firebase}
                   activeRoom={this.state.activeRoom}
                   setActiveRoom={this.setActiveRoom}
+                  
                 />
               </div>
-            
+         
 
           </div>
         </main>

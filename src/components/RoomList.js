@@ -43,7 +43,7 @@ class RoomList extends Component {
                 <div>
                     <ul className="list-group">
                         {this.state.rooms.map((room) => <li href="#" class="list-group-item list-group-item-action" key={room.name}
-                            onClick={() => this.handleClick(room)}>{room.name}</li>)}
+                        onClick={() => this.handleClick(room)}>{room.name}</li>)}
                     </ul>
 
                 </div>

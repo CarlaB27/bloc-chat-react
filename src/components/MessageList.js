@@ -9,7 +9,8 @@ class MessageList extends Component {
             username: "",
             content: "",
             roomId: "",
-            sentAt: ""
+            sentAt: "",
+            newMessage: "",
         };
 
         this.messagesRef = this.props.firebase.database().ref('messages');
@@ -24,7 +25,25 @@ class MessageList extends Component {
         });
     }
 
-    //filter results by the ID of the active room.
+    //Use the .push() method on your messages reference to 
+    //add new messages, just as you did when creating new rooms 
+    //in the RoomList component.
+    createMessage(e) {
+        this.messagesRef.push({
+            content: this.state.newMessage,
+            username: this.state.user ? this.props.user.displayName : "Guest",
+            roomId: this.props.activeRoom.key,
+            sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
+        });
+        e.preventDefault();
+        this.setState({ newMessage: '' })
+    }
+
+    handleSubmit(e) {
+        this.setState({ newMessage: e.target.value });
+    }
+
+
     render() {
         return (
             <div>
@@ -36,9 +55,19 @@ class MessageList extends Component {
                             <li className="list-group-item">{message.username}</li>
                             <li className="list-group-item">{message.sentAt}</li>
                             <li className="list-group-item">{message.roomId}</li>
+
                         </div>
                     )}
                 </ul>
+
+                <div>
+                    <form className="newMessages" onSubmit={(e) => this.createMessage(e)}>
+                        <input type="text" classname="form-control form-control-lg" placeholder="create new message"
+                            value={this.state.newMessage} onChange={(e) => this.handleSubmit(e)} />
+                        <input type="submit" className="btn btn-outline-dark" value="Send" />
+                    </form>
+                </div>
+
             </div>
         )
     }
@@ -46,3 +75,8 @@ class MessageList extends Component {
 
 
 export default MessageList;
+
+//Issues:
+//1 unix time convert to local time toLocaleTimeString()
+//2 shows guest even after signed in
+//3 How can i show the room name instead of the roomid
