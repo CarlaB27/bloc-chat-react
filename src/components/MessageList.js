@@ -43,6 +43,18 @@ class MessageList extends Component {
         this.setState({ newMessage: e.target.value });
     }
 
+    formatTime(timestamp) {
+        let date = new Date(timestamp);	// Convert the passed timestamp to milliseconds
+        let hours = date.getHours();
+        hours = hours > 12 ? date.getHours() - 12 : date.getHours();
+        let amPm = date.getHours() >= 12 ? "PM" : "AM";
+        hours = hours < 10 ? "0" + hours : hours;
+        let minutes = date.getMinutes();
+        minutes = minutes < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        let time = hours + ':' + minutes + ' ' + amPm;
+        return time;
+    }
+
 
     render() {
         return (
@@ -53,7 +65,7 @@ class MessageList extends Component {
                         <div key={index}>
                             <li className="list-group-item">{message.content}</li>
                             <li className="list-group-item">{message.username}</li>
-                            <li className="list-group-item">{message.sentAt}</li>
+                            <li className="list-group-item">{this.formatTime(message.sentAt)}</li>
                             <li className="list-group-item">{message.roomId}</li>
 
                         </div>
@@ -77,6 +89,6 @@ class MessageList extends Component {
 export default MessageList;
 
 //Issues:
-//1 unix time convert to local time toLocaleTimeString()
+//1 shows NaN for the manually entered messages in firebase (per checkpoint task)
 //2 shows guest even after signed in
-//3 How can i show the room name instead of the roomid
+//3 show room name instead of the roomid
