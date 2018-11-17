@@ -19,9 +19,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeRoom: ""
+      activeRoom: "",
+      user: ""
     };
     this.setActiveRoom = this.setActiveRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   //active room should be triggered by clicking on the name of the room in the  RoomList component.
@@ -40,18 +42,18 @@ class App extends Component {
   }
 
 
-   //In the message object, there was a username property that held a string referring to the user crafting the message. 
-    //Populate that property with the current user's username. 
-    //You'll need to pass user down as a prop from the App component.
+  //In the message object, there was a username property that held a string referring to the user crafting the message. 
+  //Populate that property with the current user's username. 
+  //You'll need to pass user down as a prop from the App component.
   render() {
     return (
       <div className="App">
-        <header>
-          <h2>Bloc Chat React</h2>
+        <header className="d-block p-2 bg-info text-black">
+          <h1>Bloc Chat React</h1>
         </header>
 
         <main>
-          <div className="navbar navbar-light">
+          <div>
             <User firebase={firebase}
               setUser={this.setUser.bind(this)}
               user={this.state.user}
@@ -67,15 +69,16 @@ class App extends Component {
               />
             </div>
 
-            
-              <div className="col-sm-8">
-                <MessageList firebase={firebase}
-                  activeRoom={this.state.activeRoom}
-                  setActiveRoom={this.setActiveRoom}
-                  
-                />
-              </div>
-         
+
+            <div className="col-sm-8">
+              <MessageList firebase={firebase}
+                activeRoom={this.state.activeRoom}
+                setActiveRoom={this.setActiveRoom}
+                user={this.state.user}
+
+              />
+            </div>
+
 
           </div>
         </main>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-    
+
     //to respond to sign-in and sign-out events in Firebase, 
     //add a  componentDidMount method to the User component 
     //that registers an  onAuthStateChanged event handler.
@@ -28,18 +28,20 @@ class User extends Component {
     render() {
 
         return (
-            <div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-auto border border-info">
 
-                <h3 className="display username">
-                    {this.props.user ? this.props.user.displayName : "Guest"}
-                </h3>
+                        <h3 className="display username m-2">
+                            Welcome {this.props.user ? this.props.user.displayName : "Guest"}
+                        </h3>
 
-                <button className="btn btn-outline-dark" onClick={this.handleSignIn.bind(this)}>Sign In</button>
-                <button className="btn btn-outline-dark" onClick={this.handleSignOut.bind(this)}>Sign Out</button>
+                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autocomplete="off" btn-space onClick={this.handleSignIn.bind(this)}>Sign In</button>
+                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autocomplete="off" btn-space onClick={this.handleSignOut.bind(this)}>Sign Out</button>
 
+                    </div>
+                </div>
             </div>
-
-
         );
     }
 
