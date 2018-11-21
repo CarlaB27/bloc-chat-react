@@ -7,3 +7,18 @@
   padding: 10px;
   
 }
+.row.col-md-4 {
+  margin-left: 20px;
+}
+
+.col-md-4 {
+  float: left;
+  padding-top: 20px;
+  align-content: flex-end;
+  align-items: flex-start;
+}
+
+.col-md-8 {
+ float: right;
+ align-items: flex-start;
+}

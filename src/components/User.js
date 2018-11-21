@@ -21,12 +21,7 @@ class User extends Component {
         this.props.firebase.auth().signOut();
     }
 
-
-    //Render the text "Guest" for anonymous users
-    //renders a sign-in button. On click, button should call Firebase's signInWithPopup method.
-    //Add a sign-out button to the User component. It should call the Firebase's signOut method.
-    render() {
-
+     render() {
         return (
             <div className="container">
                 <div className="row">

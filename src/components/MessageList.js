@@ -25,9 +25,6 @@ class MessageList extends Component {
         });
     }
 
-    //Use the .push() method on your messages reference to 
-    //add new messages, just as you did when creating new rooms 
-    //in the RoomList component.
     createMessage(e) {
         this.messagesRef.push({
             content: this.state.newMessage,
@@ -44,7 +41,7 @@ class MessageList extends Component {
     }
 
     formatTime(timestamp) {
-        let date = new Date(timestamp);	// Convert the passed timestamp to milliseconds
+        let date = new Date(timestamp);
         let hours = date.getHours();
         hours = hours > 12 ? date.getHours() - 12 : date.getHours();
         let amPm = date.getHours() >= 12 ? "PM" : "AM";
@@ -59,36 +56,35 @@ class MessageList extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <h2>You are in <span className="badge badge-info">{this.props.activeRoom.name}</span></h2>
+                </div>
                 <h3>Messages</h3>
-                <ul className="list-group">
-                    {this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
-                        <div key={index}>
-                            <li className="list-group-item">{message.content}</li>
-                            <li className="list-group-item">{message.username}</li>
-                            <li className="list-group-item">{this.formatTime(message.sentAt)}</li>
-                            <li className="list-group-item">{message.roomId}</li>
 
+                <ul className="table">
+                    {this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
+                        <div key={index} className="list-group-item">
+                            {message.content}<br />
+                            <strong>{message.username}</strong><br />
+                            {this.formatTime(message.sentAt)}
                         </div>
                     )}
                 </ul>
 
                 <div>
                     <form className="newMessages" onSubmit={(e) => this.createMessage(e)}>
-                        <input type="text" classname="form-control form-control-lg" placeholder="create new message"
+                        <input type="text" className="form-control" placeholder="create new message"
                             value={this.state.newMessage} onChange={(e) => this.handleSubmit(e)} />
                         <input type="submit" className="btn btn-outline-info" value="Send" />
                     </form>
                 </div>
-
             </div>
         )
     }
 }
 
-
 export default MessageList;
 
-//Issues:
-//1 shows NaN for the manually entered messages in firebase (per checkpoint task)
-//2 shows guest even after signed in
-//3 show room name instead of the roomid
+//To Do:
+//1fix message list spacing, add lines
+//2 fix submit forms to full length

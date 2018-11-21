@@ -32,7 +32,7 @@ class RoomList extends Component {
         this.setState({ newRoom: '' })
     }
 
-    // highlight the active room
+
     handleClick(room) {
         this.props.setActiveRoom(room);
     }
@@ -41,33 +41,37 @@ class RoomList extends Component {
         return (
 
             <div>
-                <div class="row">
-                    <div class="col-12">
 
+                <div className="row">
+                    <div className="col-12">
                         <div className="list-group">
                             {this.state.rooms.map((room) =>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-info" key={room.name}
-                                    onClick={() => this.handleClick(room)}>{room.name}</a>)}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto">
-                        <div className="form-inline">
-                            <form className="col-12" onSubmit={(e) => this.createRoom(e)}>
-                                <input type="text" classname="form-control form-control-lg"
-                                    placeholder="create new chat room" value={this.state.newRoom} onChange={(e) => this.handleSubmit(e)} />
-
-                                <input type="submit" className="btn btn-outline-info" value="Submit" />
-                            </form>
+                                <li href="#" className="list-group-item list-group-item-action list-group-item-info" key={room.name}
+                                    onClick={() => this.handleClick(room)}>{room.name}</li>)}
                         </div>
                     </div>
                 </div>
 
+                <div className="row justify-content-center align-items-center">
+                    <div className="row">
+                        <div className="col">
+                            <div className="newRoom">
+                                <form className="newRooms" onSubmit={(e) => this.createRoom(e)}>
+                                    <input type="text" className="form-control form-control-lg"
+                                        placeholder="create new chat room" value={this.state.newRoom} onChange={(e) => this.handleSubmit(e)} />
+                                </form>
+
+                                <div className="row">
+                                    <div className="col">
+                                        <input type="submit" className="btn btn-outline-info" value="Submit" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         );
     }
 }

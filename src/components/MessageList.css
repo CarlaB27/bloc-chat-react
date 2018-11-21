@@ -1,0 +1,6 @@
+.form-control {
+    position: relative;
+    display: block;
+    margin-left: 10px;
+    width: 110%;
+}
