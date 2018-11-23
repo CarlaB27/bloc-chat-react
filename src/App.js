@@ -19,8 +19,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeRoom: "",
-      user: ""
+      activeRoom: '',
+      user: ''
     };
     this.setActiveRoom = this.setActiveRoom.bind(this);
     this.setUser = this.setUser.bind(this);

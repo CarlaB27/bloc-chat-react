@@ -5,12 +5,12 @@ class MessageList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: [],
-            username: "",
-            content: "",
-            roomId: "",
-            sentAt: "",
-            newMessage: "",
+            messages: [''],
+            username: '',
+            content: '',
+            roomId: '',
+            sentAt: '',
+            newMessage: '',
         };
 
         this.messagesRef = this.props.firebase.database().ref('messages');

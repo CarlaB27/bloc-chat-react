@@ -31,8 +31,8 @@ class User extends Component {
                             Welcome {this.props.user ? this.props.user.displayName : "Guest"}
                         </h3>
 
-                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autocomplete="off" btn-space onClick={this.handleSignIn.bind(this)}>Sign In</button>
-                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autocomplete="off" btn-space onClick={this.handleSignOut.bind(this)}>Sign Out</button>
+                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autoComplete="off" onClick={this.handleSignIn.bind(this)}>Sign In</button>
+                        <button type="button" className="btn btn-outline-info m-2" data-toggle="button" aria-pressed="false" autoComplete="off" onClick={this.handleSignOut.bind(this)}>Sign Out</button>
 
                     </div>
                 </div>

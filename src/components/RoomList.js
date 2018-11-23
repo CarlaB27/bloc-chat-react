@@ -5,7 +5,8 @@ class RoomList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rooms: []
+            rooms: [],
+            newRoom: ''
         };
 
         this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -31,7 +32,6 @@ class RoomList extends Component {
         e.preventDefault();
         this.setState({ newRoom: '' })
     }
-
 
     handleClick(room) {
         this.props.setActiveRoom(room);
